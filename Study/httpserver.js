@@ -1,3 +1,4 @@
+// 기본 웹서버
 const http = require('http');   // 모듈 불러오기
 
 const hostname = '127.0.0.1';
