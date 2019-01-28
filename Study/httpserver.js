@@ -1,11 +1,14 @@
-// Basic Web server
+const http = require('http');   // 모듈 불러오기
 
+const hostname = '127.0.0.1';
+const port = 3000;
 
-var http = require('http'); //http 모듈을 http 변수로
+const server = http.createServer((req, res) => { //http 모듈의 createServer 함수
+  res.statusCode = 200;     //res.writeHead(200, {'Content-Type': 'text/html'})으로 하기도 함
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
 
-// http 모듈의 createServer 함수 호출
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});  // 응답 헤더
-    res.end('Hello World'); // end:  응답 본문
-}).listen(1337, '0.0.0.0');
-console.log('Server running at http://0.0.0.0:1337/');
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
